@@ -94,10 +94,12 @@ Testing Sidekiq on JRuby 1.7.9
 
 On the VM:
 
+    sudo su
+    source ~/.bash_profile
     cd /vagrant
     rbenv local jruby-1.7.9
     gem install bundler --no-ri --no-rdoc
-    rebenv rehash
+    rbenv rehash
     bundle install
     rbenv rehash
 
