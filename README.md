@@ -3,6 +3,10 @@ Sidekiq use with a Sinatra App
 
 This demo tests Sidekiq for job processing with a Sinatra web app both under MRI Ruby and JRuby.
 
+It also demonstrates how to build a WAR file from a Sinatra app that runs with an embedded Jetty server.
+The Sidekiq worker(s) can also be run from the expanded WAR file without any dependency on having to
+install JRuby on the target environment - you only need Java JDK 1.7.0.
+
 Tested on Mac OS X 10.8.5 with a Centos 6.3 64-bit VM.
 
 Prequisites:
