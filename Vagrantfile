@@ -13,6 +13,11 @@ Vagrant.configure("2") do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = "https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box"
 
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.auto_detect = true
+    config.cache.scope = :machine
+  end 
+
   # Shell provisioner
   config.vm.provision "shell", path: "sidekiq.sh"
 

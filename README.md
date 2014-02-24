@@ -10,6 +10,7 @@ Prequisites:
 
 * VirtualBox [Tested with v4.3.6]
 * Vagrant    [Tested with v1.4.0]
+* Optional plugin: vagrant-cachier [Tested with v0.5.1]
 
 Testing Sidekiq on MRI 1.9.3
 ----------------------------
@@ -47,7 +48,7 @@ Start a Sidekiq worker to process pending jobs in Redis:
 
 Generate some random numbers to be stored in a Redis list:
     
-    # Run this command a few times on the VM (use port 49292 if running from your host)
+    # Run this command a few times on the VM (use port 49292 if running from your host machine)
     curl -X POST http://localhost:9292/numbers -d ''
     # ==> Your request to make a number is pending.
     curl -X POST http://localhost:9292/numbers -d ''
@@ -75,7 +76,8 @@ Have a look in Redis to see what's going on:
     4) "sidekiq_demo:queues"
     5) "random-numbers"
 
-    # Let's see our currently queued job(s) without removing them.
+    # Let's see our currently queued job(s) without removing them
+    # (requires stopping the Sidekiq workers then generating a new random number).
     > LRANGE sidekiq_demo:queue:default 0 -1
     1) "{\"retry\":true,\"queue\":\"default\",\"class\":\"RandomNumberWorker\",\"args\":[100],\"jid\":\"c70f3d594444040469538556\",\"enqueued_at\":1389305919.2538064}"
 
@@ -87,19 +89,19 @@ Have a look in Redis to see what's going on:
 
     # Exit redis-cli with CTRL-D
 
-Testing Sidekiq on JRuby 1.7.4
+Testing Sidekiq on JRuby 1.7.9
 ------------------------------
 
 On the VM:
 
     cd /vagrant
-    rbenv local jruby-1.7.4
-    gem install bundler
+    rbenv local jruby-1.7.9
+    gem install bundler --no-ri --no-rdoc
     rebenv rehash
     bundle install
     rbenv rehash
 
-Now we are using JRuby 1.7.4.
+Now we are using JRuby 1.7.9.
 
 Follow the steps in `Testing Sidekiq on MRI 1.9.3` above to test out Sidekiq with Sinatra.
 

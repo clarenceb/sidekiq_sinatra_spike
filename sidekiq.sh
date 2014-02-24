@@ -32,20 +32,21 @@ rbenv install 1.9.3-p448
 rbenv rehash
 cd /vagrant
 rbenv local 1.9.3-p448
-echo "Ruby version `ruby -v` is now installed as the global default."
+echo "Ruby version `ruby -v` is now installed as the project default."
 gem install bundler --no-ri --no-rdoc
 rbenv rehash
 bundle install
 rbenv rehash
 
-# Install JRuby 1.7.4 but don't run bundler
+# Install JRuby 1.7.9 but don't run bundler
 yum install -y java-1.7.0-openjdk-devel 
-rbenv install jruby-1.7.4
+rbenv install jruby-1.7.9
 rbenv rehash
 
 # Install and start Redis
 yum install -y redis
 service redis start
+chkconfig redis on
 
 echo "I am ${HOSTNAME} with ip address ${IPADDRESS}"
 

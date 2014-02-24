@@ -4,14 +4,18 @@ GEM
     celluloid (0.15.2)
       timers (~> 1.1.0)
     connection_pool (1.2.0)
+    jruby-jars (1.7.10)
+    jruby-rack (1.1.13.3)
     json (1.8.1)
     json (1.8.1-java)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
+    rake (10.1.1)
     redis (3.0.6)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
+    rubyzip (1.0.0)
     sidekiq (2.17.2)
       celluloid (>= 0.15.2)
       connection_pool (>= 1.0.0)
@@ -24,6 +28,11 @@ GEM
       tilt (~> 1.3, >= 1.3.4)
     tilt (1.4.1)
     timers (1.1.0)
+    warbler (1.4.0)
+      jruby-jars (>= 1.5.6)
+      jruby-rack (>= 1.0.0)
+      rake (>= 0.9.6)
+      rubyzip (>= 0.9, < 1.1)
 
 PLATFORMS
   java
@@ -32,3 +41,4 @@ PLATFORMS
 DEPENDENCIES
   sidekiq
   sinatra
+  warbler
