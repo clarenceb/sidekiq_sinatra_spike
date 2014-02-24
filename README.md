@@ -107,6 +107,33 @@ Now we are using JRuby 1.7.9.
 
 Follow the steps in `Testing Sidekiq on MRI 1.9.3` above to test out Sidekiq with Sinatra.
 
+Building an executable WAR file (JRuby)
+---------------------------------------
+
+On the VM:
+
+    sudo su
+    source ~/.bash_profile
+    cd /vagrant
+    rbenv local jruby-1.7.9
+
+    # Build the WAR file (see config/warble.rb for configuration)
+    warble executable war
+    # --> creates 'sidekiq-demo.war'
+
+    # Run the web app
+    java -jar sidekiq.war
+
+Access the running web server on port 8080:
+
+    curl -X POST http://localhost:8080/numbers -d ''
+
+Starting Sidekiq workers from the expanded WAR.  This is need since Sidekiq needs to require a file to load the worker environment:
+
+    ./process_jobs_war.sh
+    curl http://localhost:8080/numbers
+
+
 Further Info
 ------------
 

@@ -12,9 +12,11 @@ Warbler::Config.new do |config|
 
   # Application directories to be included in the webapp.
   # config.dirs = %w(app config db lib log script vendor tmp)
+  config.dirs = %w(bin lib)
 
   # Additional files/directories to include, above those in config.dirs
   # config.includes = FileList["db"]
+  config.includes = FileList["config.ru"]
 
   # Additional files/directories to exclude
   # config.excludes = FileList["lib/tasks/*"]
@@ -78,7 +80,7 @@ Warbler::Config.new do |config|
 
   # Name of the archive (without the extension). Defaults to the basename
   # of the project directory.
-  # config.jar_name = "mywar"
+  config.jar_name = "sidekiq-demo"
 
   # Name of the MANIFEST.MF template for the war file. Defaults to a simple
   # MANIFEST.MF that contains the version of Warbler used to create the war file.
@@ -126,6 +128,7 @@ Warbler::Config.new do |config|
   # * <tt>jenkins-ci.winstone</tt> - Improved Winstone from Jenkins CI
   # * <tt>jetty</tt> - Embedded Jetty from Eclipse
   # config.webserver = 'jetty'
+  config.webserver = 'jetty'
 
   # Value of RAILS_ENV for the webapp -- default as shown below
   # config.webxml.rails.env = ENV['RAILS_ENV'] || 'production'

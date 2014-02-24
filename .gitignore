@@ -1,3 +1,5 @@
 .bundle
 .vagrant
 .ruby-version
+*.war
+deploy/
