@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Starts Sidekiq workers from WAR file.
+# Based in part on code from: https://github.com/jkutner/warbler-exec
 
 WAR_FILE=sidekiq-demo.war
 DEPLOY_DIR=deploy
